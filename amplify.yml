@@ -7,7 +7,7 @@ backend:
         - nvm use 22
     build:
       commands:
-        - npm install --cache .npm --prefer-offline
+        - npm install --cache .npm --prefer-offline --legacy-peer-deps
         - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
 frontend:
   phases:
@@ -17,7 +17,7 @@ frontend:
         - nvm use 22
     build:
       commands:
-        - npm run build
+        - npx vite build
   artifacts:
     baseDirectory: dist
     files:
